@@ -1,0 +1,72 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "Gatsby5-Dev-Contaner",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	//"image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm"
+    "build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "Dockerfile"
+    },
+
+	// https://code.visualstudio.com/remote/advancedcontainers/improve-performance
+	"workspaceMount": "source=gatsby5-dev-container,target=/workspace,type=volume",
+		//"source=${localWorkspaceFolderBasename}-workspace-folder,target=/workspace,type=volume",
+	"workspaceFolder": "/workspace",
+
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+
+	// Configure tool-specific properties.
+	// Add the IDs of extensions you want installed when the container is created.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode":{
+		// Set *default* container specific settings.json values on container create.
+		// These appear in .vscode/settings.json
+		"settings": {
+			"debug.javascript.autoAttachFilter": "disabled"
+		},
+		// Add the IDs of extensions you want installed when the container is created.
+		"extensions": [
+			"dbaeumer.vscode-eslint",
+			"ms-vscode.js-debug",
+			"ms-vscode.js-debug-companion",
+			"github.copilot",
+			"graphql.vscode-graphql",
+			"ecmel.vscode-html-css",
+			"davidanson.vscode-markdownlint",
+			"christian-kohler.npm-intellisense",
+			"esbenp.prettier-vscode",
+			"ms-azuretools.vscode-docker"
+		]
+		}
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+
+	// named volumes are more efficient than bind mounts
+	// on Windows WSL and Mac
+	"mounts": [
+		// Locally cache ~/.vscode-server/extensions
+		"source=${localWorkspaceFolderBasename}-extensions,target=/root/.vscode-server/extensions,type=volume",
+		// Locally cache ~/.vscode-server-insiders/extensions (VS Code Insiders)
+		"source=${localWorkspaceFolderBasename}-insiders-extensions,target=/root/.vscode-server-insiders/extensions,type=volume",
+		// Mount a local drive inside the container that you can install source code into, instead of on the host's file system directly.
+		//"workspaceMount": "source=your-volume-name-here,target=/workspace,type=volume",
+		//"source=${localWorkspaceFolderBasename}-workspace-folder,target=/workspace,type=volume",
+		//"workspaceFolder": "/workspace"
+		// Locally cache project node_modules (won't be in project folder)
+		//"source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+
+	]
+
+}
