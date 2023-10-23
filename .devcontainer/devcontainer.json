@@ -1,19 +1,18 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+// For format details, see https://aka.ms/devcontainer.json. 
+// This uses a normal Dockerfile, not a MS template.
 {
 	"name": "Gatsby5-Dev-Contaner",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	//"image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm"
+
+	// Or Docker Compose file. More info: https://containers.dev/guide/dockerfile
     "build": {
         // Path is relative to the devcontainer.json file.
         "dockerfile": "Dockerfile"
     },
 
+	// Mount the /workspace folder inside the Dev Container. 
 	// https://code.visualstudio.com/remote/advancedcontainers/improve-performance
 	"workspaceMount": "source=gatsby5-dev-container,target=/workspace,type=volume",
-		//"source=${localWorkspaceFolderBasename}-workspace-folder,target=/workspace,type=volume",
 	"workspaceFolder": "/workspace",
-
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -60,13 +59,6 @@
 		"source=${localWorkspaceFolderBasename}-extensions,target=/root/.vscode-server/extensions,type=volume",
 		// Locally cache ~/.vscode-server-insiders/extensions (VS Code Insiders)
 		"source=${localWorkspaceFolderBasename}-insiders-extensions,target=/root/.vscode-server-insiders/extensions,type=volume",
-		// Mount a local drive inside the container that you can install source code into, instead of on the host's file system directly.
-		//"workspaceMount": "source=your-volume-name-here,target=/workspace,type=volume",
-		//"source=${localWorkspaceFolderBasename}-workspace-folder,target=/workspace,type=volume",
-		//"workspaceFolder": "/workspace"
-		// Locally cache project node_modules (won't be in project folder)
-		//"source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
-
 	]
 
 }
