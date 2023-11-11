@@ -25,7 +25,8 @@ RUN apt-get update \
     && apt-get install -y curl apt-transport-https lsb-release \
     #
     # Install tslint and typescript globally, latest gatsby-cli 
-    && npm install -g tslint typescript gatsby-cli@"^5.12.1" netlify-cli \
+    # CHANGE: we are going to let the sub projects manage gatsby and netlify versions
+    # && npm install -g tslint typescript gatsby-cli@"^5.12.1" netlify-cli \
     #
     # [Optional] Update a non-root user to match UID/GID 
     # see https://aka.ms/vscode-remote/containers/non-root-user.
